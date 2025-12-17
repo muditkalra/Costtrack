@@ -1,7 +1,9 @@
-import { Feature } from "@/types";
+import { Feature, Product } from "@/types";
 import { Bell, Rabbit, Shield, TrendingDown } from "lucide-react";
 import AddProductForm from "./AddProductForm";
 import { type User } from "@supabase/supabase-js"
+import { getProducts } from "@/app/actions/products";
+import ProductCard from "./ProductCard";
 
 const products = [];
 
@@ -26,7 +28,12 @@ const features: Feature[] = [
 
 
 
-export default function HeroSection({ user }: { user: User | null }) {
+export default async function HeroSection({ user }: { user: User | null }) {
+
+
+    const products: Product[] = user ? await getProducts() : [];
+    console.log(products, "pr");
+
     return (
         <section className="py-20">
             <div className="max-w-7xl mx-auto text-center">
@@ -42,7 +49,7 @@ export default function HeroSection({ user }: { user: User | null }) {
                     prices drop. Save money effortlessly.
                 </p>
 
-                <AddProductForm />
+                <AddProductForm user={user} />
 
                 {/* Features */}
                 {products.length === 0 && (
@@ -60,6 +67,26 @@ export default function HeroSection({ user }: { user: User | null }) {
                             </div>
                         ))}
                     </div>
+                )}
+
+                {/* Products section */}
+                {user && products.length > 0 && (
+                    <section className="max-w-6xl px-10 my-10">
+                        <div className="flex items-center justify-between mb-6">
+                            <h3 className="text-2xl font-bold">
+                                Your Tracked Products
+                            </h3>
+                            <span className="text-sm text-muted-foreground">
+                                {products.length} {products.length === 1 ? "product" : "products"}
+                            </span>
+                        </div>
+
+                        <div className="grid gap-6 md:grid-cols-2 items-start">
+                            {products.map((product) => (
+                                <ProductCard key={product.id} product={product} />
+                            ))}
+                        </div>
+                    </section>
                 )}
 
                 {user && products.length === 0 && (

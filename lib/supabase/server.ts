@@ -1,8 +1,6 @@
+import { supabaseAnonKey, supabaseUrl } from "@/constants";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export async function createClient() {
     const cookieStore = await cookies();
@@ -11,7 +9,7 @@ export async function createClient() {
     // which could be used to maintain user's session
     return createServerClient(
         supabaseUrl,
-        supabaseKey,
+        supabaseAnonKey,
         {
             cookies: {
                 getAll() {

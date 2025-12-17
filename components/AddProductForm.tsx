@@ -1,17 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Loader2 } from "lucide-react";
+import AuthModal from "./AuthModal";
+import { type User } from "@supabase/supabase-js"
+import { addProduct } from "@/app/actions/products";
+import { toast } from "sonner";
 
-export default function AddProductForm({ user }: { user?: any }) {
+
+export default function AddProductForm({ user }: { user: User | null }) {
     const [url, setUrl] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
 
-    const handleSubmit = () => {
-        return
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!user) {
+            setShowAuthModal(true);
+            return;
+        }
+        setLoading(true);
+        const formData = new FormData();
+        formData.append("url", url);
+        const result = await addProduct(formData);
+        if (result.error) {
+            toast.error(result.error);
+        } else {
+            toast.success(result.message || "Product tracked successfully!");
+            setUrl("");
+        }
+
+        setLoading(false);
     }
 
     return (
@@ -46,6 +67,10 @@ export default function AddProductForm({ user }: { user?: any }) {
                 </div>
             </form>
             {/* Auth modal */}
+            <AuthModal
+                isOpen={showAuthModal}
+                onClose={() => setShowAuthModal(false)}
+            />
         </>
     )
 }
