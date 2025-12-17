@@ -5,8 +5,6 @@ import { type User } from "@supabase/supabase-js"
 import { getProducts } from "@/app/actions/products";
 import ProductCard from "./ProductCard";
 
-const products = [];
-
 const features: Feature[] = [
     {
         icon: <Rabbit />,
@@ -29,10 +27,7 @@ const features: Feature[] = [
 
 
 export default async function HeroSection({ user }: { user: User | null }) {
-
-
     const products: Product[] = user ? await getProducts() : [];
-    console.log(products, "pr");
 
     return (
         <section className="py-20">
