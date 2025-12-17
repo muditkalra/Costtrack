@@ -1,18 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from './ui/button'
+import AuthButton from './AuthButton'
+import { createClient } from '@/lib/supabase/server'
 
-export default function Navbar() {
+export default async function Navbar() {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
     return (
-        <nav className='flex justify-between items-center border-b border-gray-200'>
+        <nav className='flex justify-between items-center border-b py-3 px-1'>
             <Link href="/" className='flex items-center gap-2'>
                 <Image src={"/deal-drop-logo.png"} alt='Logo' width={100} height={100} />
             </Link>
 
-            {/* Auth button */}
-            <Button size={"sm"} className=''>
-
-            </Button>
+            <AuthButton user={user} />
         </nav>
     )
 }
