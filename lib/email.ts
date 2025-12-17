@@ -12,7 +12,7 @@ export async function sendPriceDropAlert(userEmail: string, product: Product, ol
 
         const { data, error } = await resend.emails.send({
             from: emailFrom,
-            to: userEmail,
+            to: "muditkalra267@gmail.com",
             subject: `🎉 Price Drop Alert: ${product.name}`,
             html: `<!DOCTYPE html>
 <html>
