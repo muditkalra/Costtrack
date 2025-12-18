@@ -11,7 +11,7 @@ export default async function Navbar() {
     return (
         <nav className='flex justify-between items-center border-b py-3 px-1'>
             <Link href="/" className='flex items-center gap-2'>
-                <Image src={"/costtrack-logo.png"} alt='Logo' width={55} height={55} className='p-0 m-0' />
+                <Image src={"/costtrack-logo.png"} alt='Logo' width={55} height={55} className='size-12' />
             </Link>
             <div className="flex gap-4">
                 <AuthButton user={user} />

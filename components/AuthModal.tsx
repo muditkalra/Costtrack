@@ -1,14 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
     DialogDescription,
     DialogHeader,
     DialogTitle
-} from "@/components/ui/dialog"
-import { GoogleIcon } from '@/lib/icons'
+} from "@/components/ui/dialog";
+import { GoogleIcon } from '@/lib/icons';
 import { createClient } from "@/lib/supabase/client";
 
 export default function AuthModal({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {

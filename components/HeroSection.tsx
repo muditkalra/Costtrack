@@ -30,13 +30,13 @@ export default async function HeroSection({ user }: { user: User | null }) {
     const products: Product[] = user ? await getProducts() : [];
 
     return (
-        <section className="py-20">
+        <section className="my-16">
             <div className="max-w-7xl mx-auto text-center">
-                <div className="inline-flex items-center px-6 py-2 rounded-full text-sm font-medium bg-primary text-primary-foreground mb-2">
-                    Made with ❤️ by Mudit kalra
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-primary text-primary-foreground mb-4 gap-2">
+                    Stop Over-Paying Today <TrendingDown />
                 </div>
 
-                <h2 className="text-5xl font-bold mb-4 tracking-tight">
+                <h2 className="text-3xl  md:text-5xl font-bold mb-4 tracking-tight">
                     Never Miss a Price Drop
                 </h2>
                 <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -66,7 +66,7 @@ export default async function HeroSection({ user }: { user: User | null }) {
 
                 {/* Products section */}
                 {user && products.length > 0 && (
-                    <section className="max-w-6xl px-10 my-10">
+                    <section className="my-10">
                         <div className="flex items-center justify-between mb-6">
                             <h3 className="text-2xl font-bold">
                                 Your Tracked Products

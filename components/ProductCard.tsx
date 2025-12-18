@@ -1,15 +1,15 @@
 "use client";
 
-import Image from "next/image";
-import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { deleteProduct } from "@/app/actions/products";
+import { Product } from "@/types";
 import { ChevronDown, ChevronUp, ExternalLink, Trash2, TrendingDown } from "lucide-react";
-import { Button } from "./ui/button";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Product } from "@/types";
-import { deleteProduct } from "@/app/actions/products";
 import PriceChart from "./PriceChart";
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
 
 export default function ProductCard({ product }: { product: Product }) {
     const [showChart, setShowChart] = useState(false);
@@ -25,8 +25,8 @@ export default function ProductCard({ product }: { product: Product }) {
     };
 
     return (
-        <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader className="pb-3">
+        <Card className="hover:shadow-lg transition-shadow h-max">
+            <CardHeader className="">
                 <div className="flex gap-4">
                     {product.image_url && (
                         <Image
@@ -34,19 +34,19 @@ export default function ProductCard({ product }: { product: Product }) {
                             alt={product.name}
                             width={100}
                             height={100}
-                            className="object-cover border border-border rounded-sm"
+                            className="object-cover border border-border rounded-sm object-top size-28 md:size-32"
                         />
                     )}
 
                     <div className="flex flex-col gap-2">
-                        <h3 className="font-semibold">
+                        <div className="font-semibold text-start">
                             {product.name}
-                        </h3>
+                        </div >
 
-                        <div className="flex items-center-safe gap-4">
-                            <span className="text-3xl font-semibold text-primary">
+                        <div className="flex items-center gap-4">
+                            <div className="text-2xl md:text-3xl font-semibold text-primary">
                                 {product.currency} {product.current_price}
-                            </span>
+                            </div>
                             <Badge variant="secondary">
                                 <TrendingDown />
                                 Tracking
@@ -96,11 +96,12 @@ export default function ProductCard({ product }: { product: Product }) {
                 </Button>
             </CardContent>
 
-            {showChart && (
-                <CardFooter className="pt-0">
-                    <PriceChart productId={product.id} />
-                </CardFooter>
-            )}
-        </Card>
+            {
+                showChart && (
+                    <CardFooter className="pt-0">
+                        <PriceChart productId={product.id} />
+                    </CardFooter>)
+            }
+        </Card >
     )
 }

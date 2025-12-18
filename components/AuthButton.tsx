@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { LogIn, LogOut } from "lucide-react";
-import AuthModal from "./AuthModal";
 import { Signout } from "@/app/actions/auth";
+import { Button } from "@/components/ui/button";
+import { type User } from "@supabase/supabase-js";
+import { LogIn, LogOut } from "lucide-react";
+import { useState } from "react";
+import AuthModal from "./AuthModal";
 import { CurrentUserAvatar } from "./CurrentUserAvatar";
-import { type User } from "@supabase/supabase-js"
 
 
 export default function AuthButton({ user }: { user: User | null }) {

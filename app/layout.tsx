@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 import { baseMetadata } from "@/utils/metadata";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,9 +35,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-full mx-auto px-4 md:px-6">
             <Navbar />
             {children}
+            <Footer />
           </div>
           <Toaster position="top-right" />
         </ThemeProvider>

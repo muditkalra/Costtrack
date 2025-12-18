@@ -1,13 +1,13 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Loader2 } from "lucide-react";
-import AuthModal from "./AuthModal";
-import { type User } from "@supabase/supabase-js"
 import { addProduct } from "@/app/actions/products";
+import { type User } from "@supabase/supabase-js";
+import { Loader2 } from "lucide-react";
+import { FormEvent, useState } from "react";
 import { toast } from "sonner";
+import AuthModal from "./AuthModal";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 
 export default function AddProductForm({ user }: { user: User | null }) {

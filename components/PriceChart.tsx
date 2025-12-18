@@ -1,17 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    ResponsiveContainer,
-} from "recharts";
 import { getPriceHistory } from "@/app/actions/products";
 import { Loader2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+    CartesianGrid,
+    Line,
+    LineChart,
+    ResponsiveContainer,
+    Tooltip,
+    XAxis,
+    YAxis,
+} from "recharts";
 
 
 export default function PriceChart({ productId }: { productId: string }) {
@@ -21,7 +21,6 @@ export default function PriceChart({ productId }: { productId: string }) {
     useEffect(() => {
         async function loadData() {
             const history = await getPriceHistory(productId);
-            console.log(history,"history");
 
             const chartData = history.map((item) => ({
                 date: new Date(item.checked_at).toLocaleDateString(),

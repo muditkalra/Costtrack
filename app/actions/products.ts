@@ -23,7 +23,6 @@ export async function addProduct(formData: FormData) {
         const productData = await scrapeProduct(url);
 
         if (!productData.productName || !productData.currentPrice) {
-            console.log(productData, "productData");
             return { error: "Could not extract product information from this URL" };
         }
 
