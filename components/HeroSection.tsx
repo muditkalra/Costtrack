@@ -1,15 +1,15 @@
+import { getProducts } from "@/app/actions/products";
 import { Feature, Product } from "@/types";
+import { type User } from "@supabase/supabase-js";
 import { Bell, Rabbit, Shield, TrendingDown } from "lucide-react";
 import AddProductForm from "./AddProductForm";
-import { type User } from "@supabase/supabase-js"
-import { getProducts } from "@/app/actions/products";
 import ProductCard from "./ProductCard";
 
 const features: Feature[] = [
     {
         icon: <Rabbit />,
         title: "Lightning Fast",
-        description: "Deal Drop extracts prices in seconds, handling JavaScript and dynamic content",
+        description: "Costtrack extracts prices in seconds, handling JavaScript and dynamic content",
     },
     {
         icon: <Shield />,
