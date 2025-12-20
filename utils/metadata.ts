@@ -14,7 +14,6 @@ export const baseMetadata: Metadata = {
     creator: "Mudit kalra",
     publisher: "costtrack",
     manifest: '/manifest.json',
-    themeColor: '#10b981',
     openGraph: {
         title: 'CostTrack | Track Prices & Save Money',
         description: 'Never overpay again. Track historical prices and get notified instantly when your favorite products go on sale.',

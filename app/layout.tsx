@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = baseMetadata;
+export const viewport: Viewport = {
+  themeColor: '#10b981',
+};
 
 export default function RootLayout({
   children,
@@ -35,9 +38,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="max-w-full mx-auto px-4 md:px-6">
+          <div className="mx-auto px-4 md:px-6 flex flex-col min-h-screen">
             <Navbar />
-            {children}
+            <div className="flex-1">
+              {children}
+            </div>
             <Footer />
           </div>
           <Toaster position="top-right" />
