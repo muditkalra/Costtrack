@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <div className="border-t flex justify-between items-center">
             <div className="text-sm text-muted-foreground text-center py-2 tracking-wide">
-                Made by
+                Created by
                 <Button variant={"link"} className='ml-2 p-0 tracking-normal'>
                     <Link href={"https://www.linkedin.com/in/muditkalra267"}>
                         Mudit kalra
