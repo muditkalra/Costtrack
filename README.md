@@ -45,7 +45,7 @@ Before you begin, ensure you have:
 ```bash
 git clone https://github.com/muditkalra/Costtrack
 cd Costtrack
-npm install or bun install
+bun install
 ```
 
 ### 2. Supabase Setup
@@ -225,7 +225,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ### 6. Run Development Server
 
 ```bash
-npm run dev or bun run dev
+bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
